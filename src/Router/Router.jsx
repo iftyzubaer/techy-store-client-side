@@ -11,17 +11,18 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                // loader: () => fetch('http://localhost:5000/product')
+            },
+            {
+                path: "/addProduct",
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: "/myCart",
+                element: <UpdateProduct></UpdateProduct>
             }
         ]
-    },
-    {
-        path: "/addProduct",
-        element: <AddProduct></AddProduct>
-    },
-    {
-        path: "/updateProduct",
-        element: <UpdateProduct></UpdateProduct>
     }
 ])
 export default router
