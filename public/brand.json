@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "Apple",
+        "image" : "https://i.ibb.co/yyGXyz6/knowledge-graph-logo.png"
+    },
+    {
+        "name" : "Samsung",
+        "image" : "https://i.ibb.co/wc81y3V/2560px-Samsung-Logo-svg.png"
+    },
+    {
+        "name" : "Sony",
+        "image" : "https://i.ibb.co/94XzWtW/sony-logo-blue-RGB.png"
+    },
+    {
+        "name" : "Google",
+        "image" : "https://i.ibb.co/FDNc77w/profile-vrt-raw-bytes-1587515358-10512.png"
+    },
+    {
+        "name" : "Intel",
+        "image" : "https://i.ibb.co/rdbwN2g/Intel-Logo-2005.png"
+    },
+    {
+        "name" : "Nokia",
+        "image" : "https://i.ibb.co/28swyJW/Nokia-Logo.png"
+    }
+]
