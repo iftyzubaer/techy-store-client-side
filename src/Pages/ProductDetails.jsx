@@ -4,13 +4,13 @@ import { useLoaderData, useParams } from "react-router-dom";
 const ProductDetails = () => {
 
     const [product, setProduct] = useState({})
-    const { id } = useParams()
+    const { _id } = useParams()
     const products = useLoaderData()
 
     useEffect(() => {
-        const findProduct = products.find(product => product.id == id)
+        const findProduct = products.find(product => product._id == _id)
         setProduct(findProduct)
-    }, [id, products])
+    }, [_id, products])
 
     return (
         <div className="mx-40 ">
