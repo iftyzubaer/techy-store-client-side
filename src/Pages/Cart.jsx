@@ -21,7 +21,7 @@ const Cart = () => {
         <div>
             {
                 noFound ? <p className="justify-center items-center flex h-[80vh]">{noFound}</p> :
-                    <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {
                             cart.map(product => <ProductList key={product._id} product={product}></ProductList>)
                         }

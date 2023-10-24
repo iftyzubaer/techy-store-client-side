@@ -78,7 +78,7 @@ const Navbar = () => {
                                 <span className="flex justify-center items-center gap-1">
                                     <span className="text-sm md:text-lg">{user.displayName}</span>
                                     <div className="avatar online">
-                                        <div className="w-6 md:w-16 rounded-full">
+                                        <div className="w-6 md:w-10 rounded-full">
                                             <img src={user.photoURL} />
                                         </div>
                                     </div>

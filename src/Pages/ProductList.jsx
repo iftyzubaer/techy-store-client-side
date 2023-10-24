@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ProductList = ({ product }) => {
     return (
         <div>
-            <div className="relative flex max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+            <div className="relative flex max-w-[48rem] flex-col md:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
                     <img
                         src={product.photo}
