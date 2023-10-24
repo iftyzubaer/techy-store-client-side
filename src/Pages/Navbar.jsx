@@ -1,6 +1,18 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => toast('user logged out successfully'))
+            .catch(error => console.log(error))
+    }
 
     return (
         <div>
@@ -12,8 +24,13 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/addProduct">Add Product</NavLink></li>
-                            <li><NavLink to="/cart">My Cart</NavLink></li>
+                            {
+                                user &&
+                                <>
+                                    <li><NavLink to="/addProduct">Add Product</NavLink></li>
+                                    <li><NavLink to="/cart">My Cart</NavLink></li>
+                                </>
+                            }
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">Techy Store</a>
@@ -21,12 +38,35 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/addProduct">Add Product</NavLink></li>
-                        <li><NavLink to="/cart">My Cart</NavLink></li>
+                        {
+                            user &&
+                            <>
+                                <li><NavLink to="/addProduct">Add Product</NavLink></li>
+                                <li><NavLink to="/cart">My Cart</NavLink></li>
+                            </>
+                        }
                     </ul>
                 </div>
-                <div className="navbar-end"><Link to="/login" className="btn">Login</Link></div>
+                <div className="navbar-end">
+                    {
+                        user ?
+                            <div className="flex justify-center items-center gap-4">
+                                <span className="flex justify-center items-center gap-3">
+                                    <span className="text-sm md:text-lg">{user.displayName}</span>
+                                    <div className="avatar online">
+                                        <div className="w-6 md:w-16 rounded-full">
+                                            <img src={user.photoURL} />
+                                        </div>
+                                    </div>
+                                </span>
+
+                                <Link onClick={handleLogOut} className="btn btn-xs md:btn-md">Log Out</Link>
+                            </div> :
+                            <Link to="/login" className="btn">Login</Link>
+                    }
+                </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

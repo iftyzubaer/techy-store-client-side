@@ -30,6 +30,7 @@ const AddProduct = () => {
                 console.log(data);
                 if (data.insertedID > 0) {
                     toast("Product Added Successfully");
+                    e.target.reset()
                 }
             })
     }
