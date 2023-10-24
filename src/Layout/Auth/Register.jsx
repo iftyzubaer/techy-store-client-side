@@ -30,24 +30,8 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
-
-                const user = { email }
-                fetch('http://localhost:5000/user', {
-                    method: 'POST',
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.JSON())
-                    .then(data => {
-                        if(data.insertedId > 0) {
-                            toast("Account Created Successfully!");
-                            navigate('/')
-                        }
-                    })
-                
-
+                toast("Account Created Successfully!");
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);
