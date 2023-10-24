@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-base-300 mt-16">
+        <footer className="footer footer-center p-10 bg-base-300 mt-16 dark:bg-zinc-950 dark:text-white">
             <aside>
                 <p className="font-bold">
                     Techy Store <br />Providing reliable tech since 1992

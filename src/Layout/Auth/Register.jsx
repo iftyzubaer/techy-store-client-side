@@ -14,11 +14,11 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        if(password.length < 6) {
+        if (password.length < 6) {
             toast("The password is less than 6 characters")
             return
         }
-        else if(!/[A-Z]/.test(password)) {
+        else if (!/[A-Z]/.test(password)) {
             toast("The password don't have a capital letter")
             return
         }
@@ -30,8 +30,23 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
-                toast("Account Created Successfully!");
-                navigate('/')
+
+                const user = { email }
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.JSON())
+                    .then(data => {
+                        if(data.insertedId > 0) {
+                            toast("Account Created Successfully!");
+                            navigate('/')
+                        }
+                    })
+                
 
             })
             .catch(error => {
