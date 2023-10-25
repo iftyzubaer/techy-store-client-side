@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const ProductList = ({ product }) => {
+const ProductList = ({ product, removeFromCart }) => {
     return (
         <div>
             <div className="relative flex max-w-[48rem] flex-col md:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -22,7 +22,7 @@ const ProductList = ({ product }) => {
                     </p>
                     <div className='gap-6 flex'>
                         <Link to={`/product/${product._id}`}><button className="btn btn-neutral" type="button">View Details</button></Link>
-                        <button className="btn btn-outline">Remove From Cart</button>
+                        <button onClick={() => removeFromCart(product._id)} className="btn btn-outline">Remove From Cart</button>
                     </div>
                 </div>
             </div>
@@ -34,4 +34,5 @@ export default ProductList;
 
 ProductList.propTypes = {
     product: PropTypes.object.isRequired,
+    removeFromCart: PropTypes.func.isRequired,
 }

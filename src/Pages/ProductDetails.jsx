@@ -13,25 +13,33 @@ const ProductDetails = () => {
         setProduct(findProduct)
     }, [_id, products])
 
-    const handleAddToCart = () => {
-        const cartArray = []
-        const cartItems = JSON.parse(localStorage.getItem('cart'))
-        if (!cartItems) {
-            cartArray.push(product)
-            localStorage.setItem('cart', JSON.stringify(cartArray))
-            toast("Added To Cart Successfully")
-        }
-        else {
-            const isExists = cartItems.find(product => product._id == _id)
-            if (!isExists) {
-                cartArray.push(...cartItems, product)
-                localStorage.setItem('cart', JSON.stringify(cartArray))
-                toast("Added To Cart Successfully")
-            }
-            else {
-                toast("Already Added to Cart")
-            }
-        }
+    const handleAddToCart = e => {
+        e.preventDefault()
+        const photo = product.photo
+        const name = product.name
+        const brandName = product.brandName
+        const category = product.category
+        const price = product.price
+        const details = product.details
+        const rating = product.rating
+
+        const newCartItem = { photo, name, brandName, category, price, details, rating }
+        console.log(newCartItem);
+
+        fetch('http://localhost:5000/cart', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newCartItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedID > 0) {
+                    toast("Added To Cart Successfully")
+                }
+            })
     }
 
     return (
