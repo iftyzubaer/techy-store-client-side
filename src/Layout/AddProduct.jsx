@@ -27,10 +27,8 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedID > 0) {
-                    toast("Product Added Successfully");
-                    e.target.reset()
-                }
+                toast("Product Added Successfully");
+                e.target.reset()
             })
     }
 

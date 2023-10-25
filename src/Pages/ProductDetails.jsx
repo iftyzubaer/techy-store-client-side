@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetails = () => {
 
@@ -24,7 +25,6 @@ const ProductDetails = () => {
         const rating = product.rating
 
         const newCartItem = { photo, name, brandName, category, price, details, rating }
-        console.log(newCartItem);
 
         fetch('http://localhost:5000/cart', {
             method: 'POST',
@@ -36,9 +36,7 @@ const ProductDetails = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedID > 0) {
-                    toast("Added To Cart Successfully")
-                }
+                toast("Added To Cart Successfully")
             })
     }
 
@@ -51,6 +49,7 @@ const ProductDetails = () => {
             <div className="mb-6 text-center">
                 <button onClick={handleAddToCart} className="btn btn-md lg:btn-lg">Add to Cart</button>
             </div>
+            <ToastContainer />
         </div>
     );
 };

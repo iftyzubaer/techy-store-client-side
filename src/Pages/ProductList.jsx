@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProductList = ({ product }) => {
 
     const handleRemoveFromCart = _id => {
-        console.log(_id);
         fetch(`http://localhost:5000/cart/${_id}`, {
             method: 'DELETE'
         })
@@ -14,8 +12,7 @@ const ProductList = ({ product }) => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
-                    toast("Product Deleted Successfully");
-                    console.log(_id);
+                    toast("Remove from Cart Successfully");
                 }
             })
     }
@@ -39,7 +36,6 @@ const ProductList = ({ product }) => {
                         ${product.price}
                     </p>
                     <div className='gap-6 flex'>
-                        <Link to={`/product/${product._id}`}><button className="btn btn-neutral" type="button">View Details</button></Link>
                         <button onClick={() => handleRemoveFromCart(product._id)} className="btn btn-outline">Remove From Cart</button>
                     </div>
                 </div>
