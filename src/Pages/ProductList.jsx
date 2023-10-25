@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ProductList = ({ product }) => {
 
     const handleRemoveFromCart = _id => {
-        fetch(`http://localhost:5000/cart/${_id}`, {
+        fetch(`https://techy-store-server.vercel.app/cart/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

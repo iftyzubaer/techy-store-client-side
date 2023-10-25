@@ -17,7 +17,7 @@ const AddProduct = () => {
 
         const newProduct = { photo, name, brandName, category, price, details, rating }
 
-        fetch('http://localhost:5000/product', {
+        fetch('https://techy-store-server.vercel.app/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

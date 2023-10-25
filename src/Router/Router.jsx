@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             {
                 path: "/updateProduct/:id",
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+                loader: ({ params }) => fetch(`https://techy-store-server.vercel.app/product/${params.id}`)
             },
             {
                 path: "/products/:name",
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             {
                 path: "/product/:_id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/product')
+                loader: () => fetch('https://techy-store-server.vercel.app/product')
             },
             {
                 path: "/login",
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart></Cart>,
-                loader: () => fetch('http://localhost:5000/cart')
+                loader: () => fetch('https://techy-store-server.vercel.app/cart')
             }
         ]
     }
