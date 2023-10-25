@@ -1,7 +1,25 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ProductList = ({ product, removeFromCart }) => {
+const ProductList = ({ product }) => {
+
+    const handleRemoveFromCart = _id => {
+        console.log(_id);
+        fetch(`http://localhost:5000/cart/${_id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    toast("Product Deleted Successfully");
+                    console.log(_id);
+                }
+            })
+    }
+
     return (
         <div>
             <div className="relative flex max-w-[48rem] flex-col md:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -22,10 +40,11 @@ const ProductList = ({ product, removeFromCart }) => {
                     </p>
                     <div className='gap-6 flex'>
                         <Link to={`/product/${product._id}`}><button className="btn btn-neutral" type="button">View Details</button></Link>
-                        <button onClick={() => removeFromCart(product._id)} className="btn btn-outline">Remove From Cart</button>
+                        <button onClick={() => handleRemoveFromCart(product._id)} className="btn btn-outline">Remove From Cart</button>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
@@ -33,6 +52,5 @@ const ProductList = ({ product, removeFromCart }) => {
 export default ProductList;
 
 ProductList.propTypes = {
-    product: PropTypes.object.isRequired,
-    removeFromCart: PropTypes.func.isRequired,
+    product: PropTypes.object.isRequired
 }
